@@ -6,6 +6,10 @@ namespace GitDemoExample.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        //public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        //{
+        //    _logger = logger;
+        //}
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -21,6 +25,7 @@ namespace GitDemoExample.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            _logger.LogDebug($"{nameof(Get)}");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
